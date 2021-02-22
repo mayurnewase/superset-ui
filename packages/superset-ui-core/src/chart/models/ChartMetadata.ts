@@ -15,6 +15,7 @@ export interface ChartMetadataConfig {
   thumbnail: string;
   useLegacyApi?: boolean;
   behaviors?: Behavior[];
+  notification?: string
 }
 
 export default class ChartMetadata {
@@ -39,6 +40,7 @@ export default class ChartMetadata {
   behaviors: Behavior[];
 
   datasourceCount: number;
+  notification: string;
 
   constructor(config: ChartMetadataConfig) {
     const {
@@ -52,6 +54,7 @@ export default class ChartMetadata {
       useLegacyApi = false,
       behaviors = [],
       datasourceCount = 1,
+      notification = '',
     } = config;
 
     this.name = name;
@@ -73,6 +76,7 @@ export default class ChartMetadata {
     this.useLegacyApi = useLegacyApi;
     this.behaviors = behaviors;
     this.datasourceCount = datasourceCount;
+    this.notification = notification;
   }
 
   canBeAnnotationType(type: string): boolean {
@@ -91,6 +95,7 @@ export default class ChartMetadata {
       useLegacyApi: this.useLegacyApi,
       behaviors: this.behaviors,
       datasourceCount: this.datasourceCount,
+      notification: this.notification
     });
   }
 }
